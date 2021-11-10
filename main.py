@@ -1,4 +1,5 @@
 import tensorflow as tf
+import matplotlib.image  as mpimg
 import matplotlib.pyplot as plt
 import os
 import random
@@ -106,6 +107,25 @@ validation_generator = validation_datagen.flow_from_directory(VALIDATION_DIR,
 
 history = model.fit(train_generator, epochs=20, steps_per_epoch=90,
                     validation_data=validation_generator, validation_steps=6)
+
+# plot acc and loss
+
+acc=history.history['acc']
+val_acc=history.history['val_acc']
+loss=history.history['loss']
+val_loss=history.history['val_loss']
+
+epochs=range(len(acc)) # Get number of epochs
+
+plt.plot(epochs, acc, 'r', "Training Accuracy")
+plt.plot(epochs, val_acc, 'b', "Validation Accuracy")
+plt.title('Training and validation accuracy')
+plt.figure()
+
+
+plt.plot(epochs, loss, 'r', "Training Loss")
+plt.plot(epochs, val_loss, 'b', "Validation Loss")
+plt.figure()
 
 # save model
 model.save('models/cat_or_dog.h5')
