@@ -120,12 +120,12 @@ epochs=range(len(acc)) # Get number of epochs
 plt.plot(epochs, acc, 'r', "Training Accuracy")
 plt.plot(epochs, val_acc, 'b', "Validation Accuracy")
 plt.title('Training and validation accuracy')
-plt.figure()
+plt.show()
 
 
 plt.plot(epochs, loss, 'r', "Training Loss")
 plt.plot(epochs, val_loss, 'b', "Validation Loss")
-plt.figure()
+plt.show()
 
 # save model
 model.save('models/cat_or_dog.h5')
